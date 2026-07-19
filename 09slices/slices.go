@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"slices"
+)
 
 func main() {
 	// slices = dynamic arrays
@@ -35,6 +38,28 @@ func main() {
 	numbers = append(numbers, 1)
 	numbers = append(numbers, 2)
 	fmt.Println(numbers);
-	fmt.Println(cap(numbers));
-	fmt.Println(len(numbers));
+	fmt.Println(cap(numbers))
+	fmt.Println(len(numbers))
+	
+	numbers[0] = 4
+	numbers[1] = 5
+	fmt.Println(numbers)
+
+	var nums1 = make([]int, 0, 5)
+	nums1 = append(nums1, 2)
+	var nums2 = make([]int, len(nums1))
+	copy(nums2, nums1)
+	fmt.Println(nums1, nums2)
+
+	var slc1 = []int{1, 2, 3, 4, 5}
+	fmt.Println(slc1[1:4])
+	fmt.Println(slc1[:2])
+	fmt.Println(slc1[1:])
+
+	var slc2 = []int{1, 2, 5}
+	var slc3 = []int{1, 2, 0}
+	fmt.Println(slices.Equal(slc2, slc3))
+
+	var slc4 = [][]int{{1, 2, 3}, {4, 5, 6}}
+	fmt.Println(slc4)
 }
